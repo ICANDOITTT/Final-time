@@ -2,13 +2,15 @@ resource "azurerm_lb" "star_ilb" {          #내부 로드밸런서다~
     name = "star-ilb"
     location = azurerm_resource_group.star_rg.location
     resource_group_name = azurerm_resource_group.star_rg.name
-    sku = "Standard"
+    //sku = "Standard"
 
     frontend_ip_configuration {
         name = "privateIPAddress"
         private_ip_address_allocation = "Dynamic"
         subnet_id = azurerm_subnet.star_sub3.id
     }
+
+    depends_on = [azurerm_virtual_machine_extension.star_vmex_web]
 }
 
 resource "azurerm_lb_backend_address_pool" "star_ilb_backend" {

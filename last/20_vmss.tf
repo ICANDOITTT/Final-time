@@ -4,17 +4,18 @@ resource "azurerm_linux_virtual_machine_scale_set" "star_vmss" {     #마지막�
     location = azurerm_resource_group.star_rg.location
     sku = "Standard_DS1_v2"
     instances = 2
-    disable_password_authentication = true
+    disable_password_authentication = false
     computer_name_prefix = "vmss"
     admin_username = "was-vmss"
+    admin_password = "gkwltnsmscjswo1!"
     upgrade_mode = "Automatic"
 
     platform_fault_domain_count = 1
 
-        admin_ssh_key {
-            username = "was-vmss"
-            public_key = azurerm_ssh_public_key.star_ssh.public_key
-        }
+    admin_ssh_key {
+        username = "was-vmss"
+        public_key = azurerm_ssh_public_key.star_ssh.public_key
+    }
 
     source_image_id = azurerm_image.star_image.id
     overprovision = false

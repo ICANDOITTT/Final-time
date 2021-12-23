@@ -5,6 +5,9 @@ resource "azurerm_linux_virtual_machine" "star_vm_was" {    #이미지를 만들
     network_interface_ids = [azurerm_network_interface.star_was_nwif.id]
     size = "Standard_DS1_v2"
     admin_username = "was"
+    //admin_password = "gkwltnsmscjswo1!"
+    //disable_password_authentication = false
+
 
     admin_ssh_key {
       username = "was"

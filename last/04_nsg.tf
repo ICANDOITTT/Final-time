@@ -69,7 +69,7 @@ resource "azurerm_network_security_group" "star_nsg4" {     #db는 아무포트 
     depends_on = [azurerm_subnet.star_sub4]
 }
 
-resource "azurerm_network_security_group" "star_nsg6" {     #image를 딸때 재배포 git 사용을 위해 80, tomcat을 위한 8080 이다~ 
+resource "azurerm_network_security_group" "star_nsg6" {    
     name = "star-nsg6"
     location = azurerm_resource_group.star_rg.location
     resource_group_name = azurerm_resource_group.star_rg.name
@@ -86,6 +86,7 @@ resource "azurerm_network_security_group" "star_nsg6" {     #image를 딸때 재
         destination_address_prefix = "*"
     }
 
+
     security_rule {
         name = "tomcat-rule"
         priority = 110
@@ -99,4 +100,5 @@ resource "azurerm_network_security_group" "star_nsg6" {     #image를 딸때 재
     }
 
     depends_on = [azurerm_subnet.star_sub6]
+
 }

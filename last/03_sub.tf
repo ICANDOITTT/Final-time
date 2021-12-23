@@ -36,9 +36,10 @@ resource "azurerm_subnet" "star_sub5" {  #bastion을 사용하기 위한 subnet
     address_prefixes = ["10.0.5.0/24"]
 }
 
-resource "azurerm_subnet" "star_sub6" {     #image를 따기위한 was subnet
+resource "azurerm_subnet" "star_sub6" {  
     name = "subnet06-image"
     resource_group_name = azurerm_resource_group.star_rg.name
     virtual_network_name = azurerm_virtual_network.star_vpc.name
     address_prefixes = ["10.0.6.0/24"]
 }
+
