@@ -4,10 +4,10 @@ resource "azurerm_linux_virtual_machine_scale_set" "star_vmss" {     #마지막�
     location = azurerm_resource_group.star_rg.location
     sku = "Standard_DS1_v2"
     instances = 2
-    disable_password_authentication = false
+    disable_password_authentication = true
     computer_name_prefix = "vmss"
     admin_username = "was-vmss"
-    admin_password = "gkwltnsmscjswo1!"
+    //admin_password = "gkwltnsmscjswo1!"
     upgrade_mode = "Automatic"
 
     platform_fault_domain_count = 1
@@ -18,7 +18,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "star_vmss" {     #마지막�
     }
 
     source_image_id = azurerm_image.star_image.id
-    overprovision = false
 
     os_disk {
       storage_account_type = "Standard_LRS"
@@ -39,22 +38,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "star_vmss" {     #마지막�
         load_balancer_backend_address_pool_ids = [ azurerm_lb_backend_address_pool.star_ilb_backend.id ]
       }
     }
-
-
-  extension {
-    name = "MSILinuxExtension"
-    publisher ="Microsoft.Azure.Extensions"
-    type = "CustomScript"
-    type_handler_version = "2.0"
-     auto_upgrade_minor_version = true
-
-
-      settings = <<SETTINGS
-    {
-        "script": "${filebase64("install3.sh")}"
-    }
-    SETTINGS
-  }
 
   depends_on = [azurerm_image.star_image]
 }

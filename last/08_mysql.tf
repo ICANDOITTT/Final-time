@@ -17,7 +17,7 @@ resource "azurerm_mysql_server" "star_myser" {      #mysql를 위한 server를 �
     public_network_access_enabled = true
     ssl_enforcement_enabled = false
 
-    depends_on = [ azurerm_bastion_host.star_bastion ]
+    depends_on = [ azurerm_ssh_public_key.star_ssh ]
 }
 
 

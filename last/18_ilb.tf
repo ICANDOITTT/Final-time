@@ -10,7 +10,7 @@ resource "azurerm_lb" "star_ilb" {          #내부 로드밸런서다~
         subnet_id = azurerm_subnet.star_sub3.id
     }
 
-    depends_on = [azurerm_virtual_machine_extension.star_vmex_web]
+    depends_on = [azurerm_virtual_machine_extension.star_vmex_web04]
 }
 
 resource "azurerm_lb_backend_address_pool" "star_ilb_backend" {

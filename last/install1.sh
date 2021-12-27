@@ -67,8 +67,8 @@ cd petclinic_btc
 ./mvnw tomcat7:deploy
 
 #MYSQL 배포설정 바꾸기
-sudo sed -i 's/\[Change Me\]/eruza-myser.mysql.database.azure.com/' pom.xml
-sudo sed -i 's/root/nana@eruza-myser/' pom.xml
+sudo sed -i 's/\[Change Me\]/star-myser.mysql.database.azure.com/' pom.xml
+sudo sed -i 's/root/nana@star-myser/' pom.xml
 sudo sed -i '529 s/petclinic/gkwltnsmscjswo1!/' pom.xml
 
 ./mvnw tomcat7:redeploy -P MySQL
